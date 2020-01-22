@@ -1,0 +1,230 @@
+***********1.html**********
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="Ex1.js"></script>
+<title>Insert title here</title>
+</head>
+<body >
+<form name='registration' onSubmit="fun1();">
+<table>
+<tr>
+<td>UserName</td>
+<td><input type="text" name="username" /></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="password" /></td>
+</tr>
+<tr>
+<td>Name:</td><td><input type="text" name="ename"></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><input type="text" name="address" /></td>
+</tr>
+<tr>
+<td>Country:</td><td>
+<select name="userCountry">
+<option>India</option>
+<option>Australia</option>
+<option>America</option>
+<option>Europe</option>
+<option>Other</option></select>
+</tr>
+<tr>
+
+<td><lable for="zip">ZIP Code:</lable></td>
+<td><input type="text" name="zip"/></td>
+</tr>
+<tr>
+
+<td>Email ID:</td>
+<td><input type="email" name="email"></td>
+</tr>
+
+<tr>
+<td>Gender:</td>
+<td><input type="radio" name="gender" value="male"> Male<br></td>
+<td><input type="radio" name="gender" value="female"> Female<br></td>
+</tr>
+<tr>
+<td>Language</td>
+<td><input type="checkbox" name="lang" value="Bike"> English<br></td>
+<td><input type="checkbox" name="lang" value="Car"> Non English<br></td>
+</tr>
+<tr>
+<td>About</td>
+<td><input type="text" name="about" /></td>
+</tr>
+
+<tr>
+<td>Contact No</td>
+<td><input type="text" name="contact" /></td>
+
+</table>
+<input type="submit" value="Submit" />
+<input type="reset" value="Cancel" /></form>
+</body>
+</html>
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**********Ex1.js***********
+
+
+function fun1()
+{
+var a=document.registration.username.value;
+var b=document.registration.password.value;
+var c=document.registration.ename.value;
+var d=document.registration.address.value;
+var e=document.registration.userCountry.value;
+var f=document.registration.zip.value;
+var g=document.registration.email.value;
+var h=document.registration.gender.value;
+var i=document.registration.lang.value;
+var j=document.registration.about.value;
+var k=document.registration.contact.value;
+alert("HI HELLO HOW R U"+a+" "+b+" "+c+" "+d+" "+e+" "+f+" "+g+" "+h+" "+i+" "+j+" "+k+" ");
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**********ex2.js***********
+
+
+function fun1(){
+var id = document.registration.ID.value;
+var pass = document.registration.Password.value;
+var name = document.registration.Name.value;
+var email = document.registration.Email.value;
+var zip = document.registration.Zip.value;
+
+var genders = document.getElementsByName("Gender");
+var selectedGender;
+
+for(var i = 0; i < genders.length; i++) {
+if(genders[i].checked)
+selectedGender = genders[i].value;
+}
+
+var address = document.registration.Address.value;
+var language = document.registration.Language.value;
+var country = document.registration.Country.value;
+var about = document.registration.About.value;
+
+alert( id+ " \n" + pass+ "\n " +name +" \n" +email +"\n " +zip +"\n " +selectedGender +"\n " +address +"\n " +language +" \n" +country +"\n " +about);
+
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**********index.html**********
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="Ex1.js"> </script>
+</head>
+<body onload="document.registration.ID.focus();">
+
+<form name="registration" onSubmit="fun1()">
+<table border=" ">
+
+<tr>
+<td bgcolor="#bfbfbf">UserID: </td>
+<td bgcolor="#e6e6e6"> <input type="text" name="ID"> </td>
+</tr>
+
+<tr>
+<td bgcolor="#bfbfbf">Password: </td>
+<td bgcolor="#e6e6e6"> <input type="password" name="Password"> </td>
+</tr>
+
+
+<tr>
+<td bgcolor="#bfbfbf">Name: </td>
+<td bgcolor="#e6e6e6"> <input type="text" name="Name"> </td>
+</tr>
+
+
+<tr>
+<td bgcolor="#bfbfbf">Email: </td>
+<td bgcolor="#e6e6e6"> <input type="Email" name="Email"> </td>
+</tr>
+
+
+<tr>
+<td bgcolor="#bfbfbf">ZIP: </td>
+<td bgcolor="#e6e6e6"> <input type="number" name="Zip"> </td>
+</tr>
+
+
+<tr>
+<td bgcolor="#bfbfbf">Gender: </td>
+<td bgcolor="#e6e6e6">
+<input type="radio" name="Gender" id="Gender" value="male">Male
+<input type="radio" name="Gender" id="Gender" value="female"> Female
+</td>
+</tr>
+
+
+<tr>
+<td bgcolor="#bfbfbf">Address: </td>
+<td bgcolor="#e6e6e6"> <textarea name="Address" rows="6" cols="30"></textarea></td>
+</tr>
+
+<tr>
+<td bgcolor="#bfbfbf">Language: </td>
+<td bgcolor="#e6e6e6">
+<select name="Language">
+<option value="English">English</option>
+<option value="Hindi">Hindi</option>
+<option value="Telugu">Telugu</option>
+<option value="Tamil">Tamil</option>
+</select>
+</td>
+</tr>
+
+ 
+
+<tr>
+<td bgcolor="#bfbfbf">Country: </td>
+<td bgcolor="#e6e6e6">
+<select name="Country">
+<option value="India">India</option>
+<option value="Sri Lanka">Sri Lanka</option>
+<option value="Italy">Italy</option>
+<option value="Japan">Japan</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#bfbfbf">About: </td>
+<td bgcolor="#e6e6e6"> <textarea name="About" rows="3" cols="30"></textarea></td>
+</tr>
+
+ 
+
+<tr>
+<td bgcolor="#e6e6e6"> <input type="submit" value="Register" > </td>
+<td bgcolor="#e6e6e6"> <input type="reset" value="Reset" > </td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+

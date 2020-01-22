@@ -1,0 +1,481 @@
+                              student.java
+
+package pack;
+
+public class student {
+	private int sid;
+    private String sname;
+	public int getSid() {
+		return sid;
+	}
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public student(int sid, String sname) {
+		this.sid = sid;
+		this.sname = sname;
+	}
+	public void display()
+	{
+	System.out.println("Sid : "+this.sid+" \n"+"Sname : "+this.sname);
+	}
+	}
+	
+	                        main.java
+							
+package pack;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.xml.*;
+//import org.springframework.context.*;
+import org.springframework.core.io.*;
+public class main {
+
+	public static void main(String[] args) {
+		//ApplicationContext a=new ClassPathXmlApplicationContext("ApplicationContext.xml");
+       BeanFactory b=new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
+		student d=(student)b.getBean("s");
+        d.display();
+	}
+
+}
+
+                            ApplicationContext.xml
+							
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+<bean id="s" class="pack.student">  
+<constructor-arg value="10" type="int"></constructor-arg>
+<constructor-arg value="ss" type="String"></constructor-arg>
+</bean>  
+</beans>
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                             Address.java
+
+package pack;
+
+public class Address {
+int doorno;
+String Streetname;
+public int getDoorno() {
+	return doorno;
+}
+public void setDoorno(int doorno) {
+	this.doorno = doorno;
+}
+public String getStreetname() {
+	return Streetname;
+}
+public void setStreetname(String streetname) {
+	Streetname = streetname;
+}
+public Address(int doorno, String streetname) {
+	this.doorno = doorno;
+	Streetname = streetname;
+}
+@Override
+public String toString() {
+	return "Address [doorno=" + doorno + ", Streetname=" + Streetname + "]";
+}
+}
+
+
+
+
+
+                              student.java
+
+package pack;
+
+public class student {
+	private int sid;
+    private String sname;
+    private Address a;
+	
+	public void display()
+	{
+	System.out.println("Sid : "+this.sid+" \n"+"Sname : "+this.sname+" "+this.a);
+	}
+
+	public student(int sid, String sname, Address a) {
+		this.sid = sid;
+		this.sname = sname;
+		this.a = a;
+	}
+	}
+	
+	                        main.java
+							
+package pack;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.xml.*;
+//import org.springframework.context.*;
+import org.springframework.core.io.*;
+public class main {
+
+	public static void main(String[] args) {
+		//ApplicationContext a=new ClassPathXmlApplicationContext("ApplicationContext.xml");
+       BeanFactory b=new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
+		student d=(student)b.getBean("s");
+        d.display();
+	}
+
+}
+
+
+                            ApplicationContext.xml
+							
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<bean id="a" class="pack.Address">
+<constructor-arg value="31" type="int"></constructor-arg>
+<constructor-arg value="Customs colony" type="String"></constructor-arg>
+</bean>
+<bean id="s" class="pack.student">  
+<constructor-arg value="10" type="int"></constructor-arg>
+<constructor-arg value="ss" type="String"></constructor-arg>
+<constructor-arg>
+<ref bean="a"/>
+</constructor-arg>
+</bean>  
+</beans>
+
+output:
+Sid : 10 
+Sname : ss Address [doorno=31, Streetname=Customs colony]
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+                           student.java
+						   
+package pack;
+import java.util.*;
+public class student {
+	private int sid;
+    private String sname;
+    private List mobile;
+    public void display()
+	{
+	System.out.println("Sid : "+this.sid+" \n"+"Sname : "+this.sname+"\n ");
+	Iterator i=mobile.iterator();
+	while(i.hasNext())
+	{
+		System.out.println(i.next());
+	}
+	}
+
+	
+	public student(int sid, String sname, List<String> mobile) {
+		this.sid = sid;
+		this.sname = sname;
+		this.mobile = mobile;
+	}
+	
+	
+	
+	                     main.java
+						 
+package pack;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.xml.*;
+//import org.springframework.context.*;
+import org.springframework.core.io.*;
+public class main {
+
+	public static void main(String[] args) {
+		//ApplicationContext a=new ClassPathXmlApplicationContext("ApplicationContext.xml");
+       BeanFactory b=new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
+		student d=(student)b.getBean("s");
+        d.display();
+	}
+
+}
+
+
+
+                         ApplicationContext.xml
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<bean id="s" class="pack.student">  
+<constructor-arg value="10" type="int"></constructor-arg>
+<constructor-arg value="ss" type="String"></constructor-arg>
+<constructor-arg>
+<list>
+<value>9999999999</value>
+<value>1111111111</value>
+<value>8888888888</value>
+</list> 
+</constructor-arg>
+</bean>  
+</beans>
+
+
+output:
+Sid : 10 
+Sname : ss
+ 
+9999999999
+1111111111
+8888888888
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+                                    A.java
+									
+package pack;
+
+public class A {
+B b1;
+public A()
+{
+	System.out.println("A Class Const");;
+}
+public B getB1() {
+	return b1;
+}
+public void setB1(B b1) {
+	this.b1 = b1;
+}
+public void print()
+{
+	System.out.println("hello B");
+}
+public void display()
+{
+	print();
+	this.b1.print();
+}
+}
+
+
+                                    B.java
+
+package pack;
+
+public class B {
+
+	public B() {
+		System.out.println("Class B");
+
+	}
+public void print()
+{
+	System.out.println("hello B");
+}
+}
+
+                                    Main.java
+									
+package pack;
+//import org.springframework.beans.*;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.xml.*;
+import org.springframework.core.io.*;
+public class Main {
+
+	public static void main(String[] args) {
+BeanFactory bf=new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
+A a1=bf.getBean("a",A.class);
+        a1.display();	
+
+	}
+
+}
+									
+									
+									
+									
+									
+									ApplicationContext.xml
+									
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<bean id="a" class="pack.A" autowire="byType"></bean>   
+<bean id="b" class="pack.B"></bean>   
+</beans>
+
+
+output:
+A Class Const
+Class B
+hello B
+hello B
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                                     A.java
+									 
+package pack;
+
+public class A {
+private static final A a1=new A();
+public A()
+{
+	System.out.println("A Class Const");
+}
+public static A getA() {
+	return a1;
+}
+public void display()
+{
+	System.out.println("hello");
+}
+}
+
+                                    B.java
+									
+package pack;
+
+public class B {
+
+	public B() {
+		System.out.println("Class B");
+
+	}
+public void print()
+{
+	System.out.println("hello B");
+}
+}
+
+
+                                    Main.java
+						
+package pack;
+//import org.springframework.beans.*;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.xml.*;
+import org.springframework.core.io.*;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader.*;
+public class Main {
+
+	public static void main(String[] args) {
+BeanFactory bf=new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
+A a1=bf.getBean("a",A.class);
+        a1.display();	
+
+	}
+
+}
+
+
+                                 ApplicationContext.xml
+								 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<bean id="a" class="pack.A" factory-method="getA"></bean>   
+  
+</beans>
+
+
+output:
+A Class Const
+A Class Const
+hello 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                                 			BeanClass1.java
+
+package pack;
+public class BeanClass1 {
+private String message;
+
+public void getMessage() {
+System.out.println("Message:"+message);
+}
+
+public void setMessage(String message) {
+this.message = message;
+}
+public void init()
+{
+System.out.println("This is inside init");
+}
+public void destroy()
+{
+System.out.println("This is inside destroy");
+}
+}
+
+
+                                         Main.java
+
+package pack;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+	AbstractApplicationContext context=new ClassPathXmlApplicationContext("Beans.xml");
+	BeanClass1 obj=(BeanClass1)context.getBean("b");
+	obj.getMessage();
+	context.registerShutdownHook();
+	}
+
+}
+
+
+                                        Beans.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<bean id="b" class="pack.BeanClass1" init-method="init" destroy-method="destroy">   
+  <property name="message" value="Hello how are you"></property>
+  </bean>
+  </beans>
+
+output:
+This is inside init
+Message:Hello how are you
+This is inside destroy
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                                           
+									

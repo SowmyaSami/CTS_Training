@@ -1,0 +1,17 @@
+#include<stdio.h>
+void main()
+{
+    int a[100],i;
+    for(i=0;i<=5;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<=5;i++)
+    {
+        if(a[i]%10==2||a[i]%10==5)
+        {
+            printf("%d\n",a[i]);
+        }
+    }
+    
+}

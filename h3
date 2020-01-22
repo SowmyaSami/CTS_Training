@@ -1,0 +1,24 @@
+<body bgcolor="purple">
+<img src="1.jpeg" width="200"height="200">
+<p>Student Details</p>
+<table border="">
+<tr>
+<th>Name</th>
+<th>Id</th>
+</tr>
+<tr>
+<td>Sowmya</td>
+<td>101</td>
+</tr>
+<tr>
+<td>Sri</td>
+<td>102</td>
+</tr>
+</table>
+<ol>
+<li>one</li>
+<li>two</li
+<li>three</li>
+<li>four</li>
+<li>five</li>
+</ol>
