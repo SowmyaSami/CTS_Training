@@ -1,0 +1,367 @@
+1)
+select * from cat;
+
+2)
+select * from employees;
+
+3)
+select * from departments;
+
+4)
+select first_name,last_name,salary
+from employees;
+
+5)
+select unique salary
+from employees;
+
+6)
+select first_name||last_name as "fullname", salary
+from employees
+where salary <6000;
+
+7)
+select first_name,last_name,department_id
+from employees
+where last_name='McEwen';
+
+8)
+select * 
+from employees
+where department_id is null;
+
+9)
+select *
+from departments
+where department_name='Marketing';
+
+10)
+select first_name||last_name as "fullname",hire_date,salary,department_id
+from employees
+where first_name not like '%M%';
+
+11)
+select * 
+from employees
+where salary between 8000 and 12000 and commission_pct is not null;
+
+12)
+select * 
+from employees
+order by employee_id;
+
+13)
+select * 
+from employees
+order by employee_id desc;
+
+14)
+select *
+from employees
+order by employee_id ,first_name desc;
+
+15)
+select *
+from employees
+order by salary ,department_id ;
+
+16)
+select sysdate
+from dual;
+
+17)
+select *
+from dual;
+
+18)
+select *
+from  employees
+where extract(month from hire_date)='01';
+
+19)
+select *
+from  employees
+where extract(year from hire_date)='2005';
+
+20)
+select employee_id,first_name||last_name as "fullname",salary,salary*12 as "annual salary"
+from employees;
+
+21)
+select count(*)
+from employees;
+
+22)
+select count(employee_id)
+from employees;
+
+23)
+select count(commission_pct)
+from employees;
+
+24)
+select max(salary)
+from employees;
+
+25)
+select min(salary)
+from employees;
+
+26)
+select avg(salary)
+from employees;
+
+27)
+select sum(salary)
+from employees;
+
+28)
+select abs(-9)
+from dual;
+
+29)
+select sqrt(12)
+from dual;
+
+30)
+select mod(20,3)
+from dual;
+
+31)
+select ascii('A')
+from dual;
+
+32)
+select chr(65)
+from dual;
+
+33)
+select concat(first_name,last_name)
+from employees;
+
+34)
+select initcap(first_name)
+from employees;
+
+35)
+select upper(first_name)
+from employees;
+
+36)
+select lower(first_name)
+from employees;
+
+37)
+select length(first_name)
+from employees;
+
+38)
+select lpad(first_name,10,'*')
+from employees;
+
+39)
+select rpad(first_name,10,'*')
+from employees;
+
+40)
+select substr(first_name,1,4)
+from employees;
+
+41)
+select substr(first_name,8)
+from employees;
+
+42)
+select substr(first_name,4)
+from employees;
+
+43)
+select rtrim(first_name)
+from employees;
+
+44)
+select ltrim(' Hello world')
+from dual;
+
+45)
+select rtrim('Helloworld ')
+from dual;
+
+46)
+select trim(' Helloworld ')
+from dual;
+
+47)
+select first_name||' Hello '||last_name
+from employees;
+
+48)
+select first_name||trim(' Hello ')||last_name
+from employees;
+
+49)
+select first_name||ltrim(' Hello ')||last_name
+from employees;
+
+50)
+select first_name||rtrim(' Hello ')||last_name
+from employees;
+
+51)
+select replace(first_name,'a','A')
+from employees;
+
+52)
+select add_months(sysdate,2)
+from dual;
+
+53)
+select current_date
+from dual;
+
+54)
+select current_timestamp
+from dual;
+
+55)
+select extract(day from(sysdate))
+from dual;
+
+56)
+select extract(day from to_date('31-dec-2019','DD-MON-YYYY'))
+from dual;
+
+57)
+select extract(month from to_date('31-dec-2019','DD-MON-YYYY'))
+from dual;
+
+58)
+select extract(year from to_date('31-dec-2019','DD-MON-YYYY'))
+from dual;
+
+59)
+select last_day(sysdate)
+from dual;
+
+60)
+select next_day(sysdate,'friday')
+from dual;
+
+61)
+select round(sysdate)
+from dual;
+
+62)
+select round(sysdate+15)
+from dual;
+
+63)
+select round(sysdate,'month')
+from dual;
+
+64)
+select round(sysdate+15,'month')
+from dual;
+
+65)
+select trunc(sysdate)
+from dual;
+
+66)
+select trunc(sysdate+15)
+from dual;
+
+67)
+select trunc(sysdate,'month')
+from dual;
+
+68)
+select trunc(sysdate+15,'month')
+from dual;
+
+69)
+select round(sysdate+200,'month')
+from dual;
+
+70)
+select trunc(sysdate+200,'month')
+from dual;
+
+71)
+select round(1.25,1)
+from dual;
+
+72)
+select round(1.25)
+from dual;
+
+73)
+select round(1.75)
+from dual;
+
+74)
+select round(4.535,2)
+from dual;
+
+75)
+select round(34.458,-1)
+from dual;
+
+76)
+select round(38.4158,-1)
+from dual;
+
+77)
+select trunc(1.25,1)
+from dual;
+
+78)
+select trunc(1.25)
+from dual;
+
+79)
+select trunc(1.75)
+from dual;
+
+80)
+select trunc(4.535,2)
+from dual;
+
+81)
+select trunc(34.458,-1)
+from dual;
+
+82)
+select trunc(38.4158,-1)
+from dual;
+
+83)
+select trunc(354.4158,-2)
+from dual;
+
+84)
+select to_char(sysdate,'YYYY-MM-DD')
+from dual;
+
+85)
+select to_char(sysdate,'DL','NLS_DATE_LANGUAGE=FRENCH')
+from dual;
+
+86)
+select to_date('5 jan 2017','DD-MON-YYYY')from dual;
+87)
+select count(employee_id)
+from employees
+group by department_id;
+
+88)
+select department_id, count(employee_id)
+from employees
+group by department_id;
+
+89)
+select max(salary)
+from employees
+group by department_id;
+
+
